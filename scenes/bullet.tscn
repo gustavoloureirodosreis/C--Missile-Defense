@@ -4,10 +4,9 @@
 [ext_resource path="res://assets/bulletPlayer.png" type="Texture" id=2]
 [ext_resource path="res://scripts/bullet.cs" type="Script" id=3]
 
-
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 20.1374
-height = 95.1241
+radius = 10.0474
+height = 50.9539
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -30,5 +29,6 @@ rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 2 )
 animation = "player"

@@ -9,6 +9,12 @@ public class bulletBrain : Node {
 
     }
 
+    public void spawnEnemy() {
+        Vector2 spawnPosition = new Vector2(Convert.ToSingle(GD.RandRange(0, 1000)), -30);
+        Vector2 targetPosition = new Vector2(Convert.ToSingle(GD.RandRange(0, 1000)), 550);
+        spawnBullet(spawnPosition,targetPosition,"enemy");
+    }
+
     public void spawnBullet(Vector2 spawnPosition, Vector2 targetPosition, string animationName) {
         
         // Spawn bullet at position, and look at target position
@@ -39,5 +45,11 @@ public class bulletBrain : Node {
 	public override void _Process(float delta) {
 
 	}
+
+    // Signals
+
+    public void _on_enemySpawner_timeout() {
+        spawnEnemy();
+    }
 
 }

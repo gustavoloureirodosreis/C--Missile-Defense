@@ -15,4 +15,8 @@ public class cannonBarrel : Sprite {
         }
     }
 
+    public override void _Process(float delta) {
+        LookAt(GetGlobalMousePosition());
+    }
+
 }
