@@ -4,6 +4,7 @@ using Godot;
 public class player : Node {
 
     bulletBrain bulletBrain;
+    public bool canShoot = true;
 
     public override void _Ready() {
         bulletBrain = (bulletBrain)GetNode("/root/game/bullets/bulletBrain");
