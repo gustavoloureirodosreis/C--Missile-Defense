@@ -5,6 +5,8 @@ public class player : Node {
 
     bulletBrain bulletBrain;
     public bool canShoot = true;
+    public int health = 3;
+    public int score = 0;
 
     public override void _Ready() {
         bulletBrain = (bulletBrain)GetNode("/root/game/bullets/bulletBrain");
@@ -15,9 +17,20 @@ public class player : Node {
 
 	}
 
+    public void hitPlayer(int damageAmount = 1) {
+        health = Math.Max(health-damageAmount,0);
+        updateUI();
+    }
+
+    public void addScore(int scoreAmount = 1) {
+        score += scoreAmount;
+        updateUI();
+    }
+
     public void updateUI() {
         var healthAndScore = (Label)GetNode("/root/game/HUD/healthAndScore");
-        healthAndScore.Text = "Score: 0 Health: 0";
+        var newHudText = "HEALTH: " + health + "     " + "SCORE: " + score;
+        healthAndScore.Text = newHudText;
     }
 
     // Signals 
@@ -27,6 +40,7 @@ public class player : Node {
         if((bulletType != null) && (bulletType.Animation == "enemy") && bullet is bullet) {
             bulletBrain.CallDeferred("spawnExplosion", bullet.GlobalPosition, "enemy");
             bullet.QueueFree();
+            hitPlayer();
         }
     }
 

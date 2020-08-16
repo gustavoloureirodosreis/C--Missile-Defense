@@ -4,9 +4,11 @@ using Godot;
 public class explosion : Area2D {
 
     bulletBrain bulletBrain;
+    player player;
 
     public override void _Ready() {
         bulletBrain = (bulletBrain)GetNode("/root/game/bullets/bulletBrain");
+        player = (player)GetNode("/root/game/player");
     }
 
 	public override void _Process(float delta) {
@@ -25,6 +27,7 @@ public class explosion : Area2D {
         if((bulletType != null) && (bulletType.Animation == "enemy") && bullet is bullet) {
             bulletBrain.CallDeferred("spawnExplosion", bullet.GlobalPosition, "enemy");
             bullet.QueueFree();
+            player.addScore();
         }
     }
 }
