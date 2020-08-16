@@ -23,7 +23,7 @@ public class explosion : Area2D {
         var bulletType = (AnimatedSprite)bullet.GetNodeOrNull("AnimatedSprite");
         var explosionType = (AnimatedSprite)GetNodeOrNull("AnimatedSprite");
         if((bulletType != null) && (bulletType.Animation == "enemy") && bullet is bullet) {
-            bulletBrain.spawnExplosion(bullet.GlobalPosition, "enemy");
+            bulletBrain.CallDeferred("spawnExplosion", bullet.GlobalPosition, "enemy");
             bullet.QueueFree();
         }
     }
