@@ -44,6 +44,9 @@ public class player : Node {
     public void addScore(int scoreAmount = 1) {
         score += scoreAmount;
         updateUI();
+
+        // Increases difficulty
+        bulletBrain.increaseDifficulty();
     }
 
     public void updateUI() {
