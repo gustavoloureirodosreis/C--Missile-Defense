@@ -5,10 +5,12 @@ public class bulletBrain : Node {
 
     scenes scenes = new scenes();
     Timer enemySpawner;
-    public float maxSpawnInterval = 3.5f;
-    public float minSpawnInterval = 0.5f;
-    public float spawnIntervalDecrease = 0.2f;
     public float spawnInterval = 0;
+    [Export] public float maxSpawnInterval = 4;
+    [Export] public float minSpawnInterval = 0.5f;
+    [Export] public float spawnIntervalDecrease = 0.2f;
+    [Export] public int playerBulletSpeed = 300;
+    [Export] public int enemyBulletSpeed = 250;
 
     public override void _Ready() {
         enemySpawner = (Timer)GetNode("enemySpawner");
@@ -40,6 +42,12 @@ public class bulletBrain : Node {
         var bulletSprite = (AnimatedSprite)bullet.GetNode("AnimatedSprite");
         bulletSprite.Play(animationName);
 
+        // Decides it's speed
+        if(animationName == "player") {
+            bullet.speed = playerBulletSpeed;
+        } else if(animationName == "enemy") {
+            bullet.speed = enemyBulletSpeed;
+        }
     }
     
     public void spawnExplosion(Vector2 spawnPosition, string animationName) {

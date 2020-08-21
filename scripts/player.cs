@@ -6,8 +6,8 @@ public class player : Node {
     bulletBrain bulletBrain;
     public bool canShoot = true;
     public bool gameOver = false;
-    public int health = 3;
     public int score = 0;
+    [Export] public int health = 3;
 
     public override void _Ready() {
         bulletBrain = (bulletBrain)GetNode("/root/game/bullets/bulletBrain");

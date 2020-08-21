@@ -24,16 +24,17 @@ animations = [ {
 "frames": [ ExtResource( 6 ), ExtResource( 10 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 1 ), ExtResource( 11 ) ],
 "loop": true,
 "name": "enemy",
-"speed": 5.0
+"speed": 15.0
 } ]
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 80.6849
+radius = 41.2408
 
 [node name="explosion" type="Area2D"]
 script = ExtResource( 13 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.6, 0.6 )
 frames = SubResource( 1 )
 animation = "player"
 frame = 2

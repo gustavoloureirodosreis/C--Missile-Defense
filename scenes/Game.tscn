@@ -76,6 +76,7 @@ tile_data = PoolIntArray( 131071, 0, 0, 65536, 0, 0, 65537, 0, 0 )
 
 [node name="bulletBrain" type="Node" parent="bullets"]
 script = ExtResource( 5 )
+playerBulletSpeed = 400
 
 [node name="enemySpawner" type="Timer" parent="bullets/bulletBrain"]
 wait_time = 3.0
@@ -88,6 +89,7 @@ position = Vector2( 477.623, 495.936 )
 
 [node name="player" type="Node" parent="."]
 script = ExtResource( 6 )
+health = 6
 
 [node name="playerHitZone" type="Area2D" parent="player"]
 
