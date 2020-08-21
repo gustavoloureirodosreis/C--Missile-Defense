@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/bulletEnemy.png" type="Texture" id=1]
 [ext_resource path="res://assets/bulletPlayer.png" type="Texture" id=2]
@@ -7,6 +7,25 @@
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 10.0474
 height = 50.9539
+
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0, 0.237037, 0.562963 )
+colors = PoolColorArray( 0.998047, 0.970757, 0.970757, 1, 0.896484, 0.825352, 0.168091, 1, 0.498047, 0.00972748, 0.00972748, 1 )
+
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+lifetime_randomness = 0.8
+flag_disable_z = true
+spread = 4.0
+gravity = Vector3( 0, 20, 0 )
+initial_velocity = 200.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 8.0
+scale_random = 1.0
+color_ramp = SubResource( 5 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -27,6 +46,13 @@ script = ExtResource( 3 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource( 1 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+position = Vector2( -29.1357, -1.10243 )
+rotation = -3.14159
+amount = 80
+lifetime = 2.0
+process_material = SubResource( 3 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.5, 0.5 )
